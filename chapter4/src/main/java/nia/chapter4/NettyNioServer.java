@@ -21,31 +21,37 @@ public class NettyNioServer {
         final ByteBuf buf =
                 Unpooled.unreleasableBuffer(Unpooled.copiedBuffer("Hi!\r\n",
                         Charset.forName("UTF-8")));
+        // Uses NioEventLoopGroup for non-blocking mode
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
+            // Creates ServerBootstrap
             ServerBootstrap b = new ServerBootstrap();
             b.group(group).channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(port))
+                    // Specifies ChannelInitializer to be called for each accepted connection
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                                       @Override
-                                      public void initChannel(SocketChannel ch)
-                                              throws Exception {
-                                              ch.pipeline().addLast(
+                                      public void initChannel(SocketChannel ch) throws Exception {
+                                          ch.pipeline().addLast(
+                                                  // Adds ChannelInboundHandlerAdapter to receive events and process them
                                                   new ChannelInboundHandlerAdapter() {
                                                       @Override
                                                       public void channelActive(
                                                               ChannelHandlerContext ctx) throws Exception {
-                                                                ctx.writeAndFlush(buf.duplicate())
-                                                                  .addListener(
-                                                                          ChannelFutureListener.CLOSE);
+                                                          // Writes message to client
+                                                          ctx.writeAndFlush(buf.duplicate())
+                                                                  // close the connection once the message is written
+                                                                  .addListener(ChannelFutureListener.CLOSE);
                                                       }
                                                   });
                                       }
                                   }
                     );
+            // Binds server to accept connections
             ChannelFuture f = b.bind().sync();
             f.channel().closeFuture().sync();
         } finally {
+            // Releases all resources
             group.shutdownGracefully().sync();
         }
     }

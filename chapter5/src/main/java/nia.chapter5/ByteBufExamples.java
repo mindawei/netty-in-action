@@ -14,6 +14,7 @@ import static io.netty.channel.DummyChannelHandlerContext.DUMMY_INSTANCE;
 
 /**
  * Created by kerr.
+ * @author kerr
  *
  * Listing 5.1 Backing array
  *
@@ -56,7 +57,8 @@ public class ByteBufExamples {
      * Listing 5.1 Backing array
      */
     public static void heapBuffer() {
-        ByteBuf heapBuf = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
+        // get reference form somewhere
+        ByteBuf heapBuf = BYTE_BUF_FROM_SOMEWHERE;
         if (heapBuf.hasArray()) {
             byte[] array = heapBuf.array();
             int offset = heapBuf.arrayOffset() + heapBuf.readerIndex();
@@ -69,7 +71,8 @@ public class ByteBufExamples {
      * Listing 5.2 Direct buffer data access
      */
     public static void directBuffer() {
-        ByteBuf directBuf = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
+        // get reference form somewhere
+        ByteBuf directBuf = BYTE_BUF_FROM_SOMEWHERE;
         if (!directBuf.hasArray()) {
             int length = directBuf.readableBytes();
             byte[] array = new byte[length];
@@ -99,11 +102,14 @@ public class ByteBufExamples {
      */
     public static void byteBufComposite() {
         CompositeByteBuf messageBuf = Unpooled.compositeBuffer();
-        ByteBuf headerBuf = BYTE_BUF_FROM_SOMEWHERE; // can be backing or direct
-        ByteBuf bodyBuf = BYTE_BUF_FROM_SOMEWHERE;   // can be backing or direct
+        // can be backing or direct
+        ByteBuf headerBuf = BYTE_BUF_FROM_SOMEWHERE;
+        // can be backing or direct
+        ByteBuf bodyBuf = BYTE_BUF_FROM_SOMEWHERE;
         messageBuf.addComponents(headerBuf, bodyBuf);
         //...
-        messageBuf.removeComponent(0); // remove the header
+        // remove the header
+        messageBuf.removeComponent(0);
         for (ByteBuf buf : messageBuf) {
             System.out.println(buf.toString());
         }
@@ -190,7 +196,7 @@ public class ByteBufExamples {
     public static void byteBufCopy() {
         Charset utf8 = Charset.forName("UTF-8");
         ByteBuf buf = Unpooled.copiedBuffer("Netty in Action rocks!", utf8);
-        ByteBuf copy = buf.copy(0, 15);
+        ByteBuf copy = buf.copy(0, 14);
         System.out.println(copy.toString(utf8));
         buf.setByte(0, (byte)'J');
         assert buf.getByte(0) != copy.getByte(0);
