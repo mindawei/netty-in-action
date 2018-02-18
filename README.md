@@ -74,3 +74,10 @@ This chapter covers
 * Event loop concept and implementation
 * Task scheduling
 * Implementation details
+
+# [08 Bootstrapping](https://mindawei.github.io/2018/02/17/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%888%EF%BC%89/)
+This chapter covers
+* Bootstrapping clients and servers
+* Bootstrapping clients from within a `Channel`
+* Adding `ChannelHandlers`
+* Using `ChannelOptions` and attributes
