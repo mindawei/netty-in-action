@@ -81,3 +81,15 @@ This chapter covers
 * Bootstrapping clients from within a `Channel`
 * Adding `ChannelHandlers`
 * Using `ChannelOptions` and attributes
+
+# [09 Unit testing](https://mindawei.github.io/2018/02/18/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%889%EF%BC%89/)
+This chapter covers
+* Unit testing
+* Overview of `EmbeddedChannel`
+* Testing `ChannelHandlers` with `EmbeddedChannel`
+
+# [10 The codec framework](https://mindawei.github.io/2018/02/18/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%8810%EF%BC%89/)
+This chapter covers
+* An overview of decoders, encoders and codecs
+* Netty’s codec classes
+
