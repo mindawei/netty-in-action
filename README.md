@@ -93,3 +93,10 @@ This chapter covers
 * An overview of decoders, encoders and codecs
 * Netty’s codec classes
 
+# [11 Provided ChannelHandlers and codecs](https://mindawei.github.io/2018/02/19/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%8811%EF%BC%89/)
+This chapter covers
+* Securing Netty applications with SSL/TLS
+* Building Netty HTTP/HTTPS applications
+* Handling idle connections and timeouts
+* Decoding delimited and length-based protocols
+* Writing big data
