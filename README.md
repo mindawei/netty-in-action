@@ -100,3 +100,15 @@ This chapter covers
 * Handling idle connections and timeouts
 * Decoding delimited and length-based protocols
 * Writing big data
+
+# [12 WebSocket](https://mindawei.github.io/2018/02/22/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%8812%EF%BC%89/)
+This chapter covers
+* The concept of a real-time web
+* The WebSocket protocol
+* Building a WebSocket-based chat room server with Netty
+
+
+# [13 Broadcasting events with UDP](https://mindawei.github.io/2018/02/22/%E3%80%8ANetty-in-Action%E3%80%8B%E7%AC%94%E8%AE%B0%EF%BC%8813%EF%BC%89/)
+This chapter covers
+* An overview of UDP
+* A sample broadcasting application
